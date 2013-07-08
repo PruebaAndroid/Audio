@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<!-- put these links on your page -->
+ <link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+ <link href='http://fonts.googleapis.com/css?family=Holtwood+One+SC|Bevan' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Play:700' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'> <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+
+  <script type="text/javascript" src="js/jquery.audioeffects.js"></script>
+
+
+
+
+  <title>jQuery Audio Effects</title>
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+   $('#example1').audioeffects({
+     theTrigger: "click",
+     audioId: "button11",
+     volume:0.7,
+     callback: function(){alert('this triggered an audio effect by by using the "click" event then alerted you in a callback function, Thank You!')}
+   });
+    $('#example2').audioeffects({
+     theTrigger: "mouseover",
+     audioId: "button12",
+     volume:0.4
+   });
+    $('#example3').audioeffects({
+     theTrigger: "dblclick",
+     audioId: "button13",
+     volume:0.9
+   });
+     $('#example4').audioeffects({
+     theTrigger: "tap",
+     audioId: "button11",
+     volume:0.9
+   });
+
+  });</script>
+ <style type="text/css">
+    body{
+      background:#eee;
+    }
+
+
+
+	</style>
+</head>
+
+<body>  <div id="home" data-role="page" data-theme="b">
+<header id="header" data-role="header" data-theme="a"><h1>jQuery Audio Effects</h1></header>
+
+ <p>A couple examples of audio effects in action.</p>
+ <button id="example1">click</button> <button id="example2">mouseover</button>  <button id="example3">dblclick</button> <button id="example4">tap</button>
+
+
+
+
+
+<h1>jQuery Audio Effects Plugin Tutorial</h1>
+<h4>Written By Nolan R Campbell - http://audioeffects.nrcstudios.info</h4>
+<h3>Including Scripts and CSS files</h3>
+<p>Add the following scripts to the head section of the page.
+<pre>
+  &lt;script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js">&lt;/script>
+  &lt;script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js">&lt;/script>
+  &lt;script type="text/javascript" src="js/jquery.audioeffects.js">&lt;/script>
+</pre>
+ </p>
+ <h3>Adding the Audio files to the page - prefferably  towards the bottom of the page:</h3>
+ <p>Add the following code to the body of the html page
+ <pre>
+ &lt;audio id="click1">
+ &lt;source src="audio/click1.wav"  />
+ &lt;source src="audio/click1.mp3"  />
+ &lt;source src="audio/click1.ogg"  />
+ &lt;source src="audio/click1.m4a"  />
+ &lt;/audio>
+
+ </pre> Give each audio tag a unique 'id' attribute. This 'id' attribute will be selected within the jQuery code to choose the audio effect to play.
+ Each Audio tag should have the source entries for each browser compatibility
+ (.wav, .mp3, .ogg, .m4a); This will ensure that the effect will play in all browsers.
+ </p>
+ <h3>Uploading files/folders to server</h3>
+ <p>upload the follwing folders to your server.
+ <ul>
+ <li>audio</li>
+ <li>js</li>
+ </ul></p>
+ <h3>Adding jQuery code:</h3>
+ <p>Add the jQuery code inside a $(document).ready(function(){}); block like so : <br /> </p>
+ <pre>
+ $(docuemnt).ready(function(){
+  $('#divOne').audioeffects({
+
+            theTrigger : "mouseover",
+            theStop : "mouseleave"
+            audioId : "button1",
+            volume: 0.6
+
+    });
+
+  $('#exampleTwo').audioeffects({
+            theTrigger: "keydown",
+            audioId: "beep3",
+            volume: 1,
+            keycode: 38,
+            callback: function(){alert('this triggered an audio effect when I pressed the "up" arrow key.')}
+  })
+  });</pre>
+ <h1>Options Explained:</h1>
+ <ul>
+ <li><h4>theTrigger</h4> - this is the event that triggers the audio effect can be most jQuery events. ('click', 'mouseover', 'mouseout', 'load', 'dblclick','swipe', 'tap', 'scroll', 'keydown', 'keyup', 'focus', 'blur' etc).     </li>
+ <li><h4>theStop</h4> - this is the event that triggers the audio effect to Pause. ('click', 'mouseover', 'mouseout', 'load', 'dblclick','swipe', 'tap', 'scroll', 'keydown', 'keyup', 'focus', 'blur' etc).     </li>  
+ <li><h4>audioId</h4> -  this is the unique 'id' attribute you set for the 'audio' tag .</li>
+ <li><h4>volume</h4> - the volume of the audio effect. From 0.0 to 1</li>
+ <li><h4>keycode</h4> - this is the keycode if using 'keydown' or 'keyup' event - the example 38 is the up arrow key for a complete list of keycodes visit: <a href="http://www.k68.org/wp-content/uploads/2010/11/Key_Codes.htm">http://www.k68.org/wp-content/uploads/2010/11/Key_Codes.htm</a>    </li>
+ <li><h4>callback</h4> - add a callback function that will run when event is triggered .</li>
+
+ </ul>
+
+ <h4>Mobile Events</h4>
+ <p>You can use jQuery-Mobile events such as "tap" and "taphold" but I suggest using a 3rd party plugin such as jQuery.touchSwipe download here: <a href="http://labs.skinkers.com/touchSwipe/">http://labs.skinkers.com/touchSwipe/</a> for all your 'swipe' events</p>
+ <p>Please note that not all mobile browsers can handle html5 audio.</p>
+ <p>If you have any questions about installing, embedding and editing the app files. Send your questions to nuvuscripts@gmail.com.</p>
+  </div>
+
+  <audio id="button11"><source src="audio/button-11.wav"  />
+  <source src="audio/button-11.mp3"  /><source src="audio/button-11.ogg"  />
+  <source src="audio/button-11.m4a"  /></audio>
+  <audio id="button12"><source src="audio/button-12.wav"  />
+  <source src="audio/button-12.mp3"  /><source src="audio/button-12.ogg"  />
+  <source src="audio/button-12.m4a"  /></audio>
+  <audio id="button13"><source src="audio/button-13.wav"  />
+  <source src="audio/button-13.mp3"  /><source src="audio/button-13.ogg"  />
+  <source src="audio/button-13.m4a"  /></audio>
+
+</body>
+
+</html>
+
+
